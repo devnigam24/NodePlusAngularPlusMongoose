@@ -27,14 +27,17 @@ app.get('/', function(req,res){
 //User Data
 
 app.post('/postUserData', function(req,res) {
-    mongoose.connect("mongodb://localhost:27017/rdb", function(error, success){
-        if(error){
-            console.log("Error connecting to database: \n" + error);
-        }
-        else{
-            console.log('Connected to Database');
-        }
-    });
+
+    var conn1 = mongoose.createConnection("mongodb://localhost:27017/rdb", function(error, success){
+                                                      if(error){
+                                                          console.log("Error connecting to database: \n" + error);
+                                                      }
+                                                      else{
+                                                          console.log('Connected to Database');
+                                                      }
+                                                  });;
+
+
     var userSchema = mongoose.Schema({
         fname: String,
         lname: String,
@@ -43,7 +46,7 @@ app.post('/postUserData', function(req,res) {
         address1: String,
         zip: String
     });
-    var oneUser = mongoose.model(req.body.email1, userSchema);
+    var oneUser = conn1.model(req.body.email1, userSchema);
     var tempUser = new oneUser({
         fname: req.body.fname,
         lname: req.body.lname,
@@ -68,7 +71,7 @@ app.post('/postUserData', function(req,res) {
 //User Experience
 
 app.post('/postUserjobx', function(req,res) {
-    mongoose.connect("mongodb://localhost:27017/xdb", function(error, success){
+    var conn2 = mongoose.createConnection("mongodb://localhost:27017/xdb", function(error, success){
         if(error){
             console.log("Error connecting to database: \n" + error);
         }
@@ -82,7 +85,7 @@ app.post('/postUserjobx', function(req,res) {
         location: String,
         desc: String,
     });
-    var oneJob = mongoose.model(userInSessionObject.emailID, userJobSchema);
+    var oneJob = conn2.model(userInSessionObject.emailID, userJobSchema);
     var tempUser = new oneJob({
         companyName: req.body.companyName,
         title: req.body.title,
@@ -106,7 +109,7 @@ app.post('/postUserjobx', function(req,res) {
 //User Achievements
 
 app.post('/postUserAchievement', function(req,res) {
-    mongoose.connect("mongodb://localhost:27017/userAchievementsDB", function(error, success){
+    conn3 = mongoose.createConnection("mongodb://localhost:27017/userAchievementsDB", function(error, success){
         if(error){
             console.log("Error connecting to database: \n" + error);
         }
@@ -120,7 +123,7 @@ app.post('/postUserAchievement', function(req,res) {
         achievementAward : String,
         achievementDesc : String
     });
-    var oneJob = mongoose.model(userInSessionObject.emailID, userAchievementSchema);
+    var oneJob = conn3.model(userInSessionObject.emailID, userAchievementSchema);
     var tempUser = new oneJob({
         achievementName: req.body.achievementName,
         achievementTitle: req.body.achievementTitle,
@@ -142,7 +145,7 @@ app.post('/postUserAchievement', function(req,res) {
 
 //User Education
 app.post('/postUserEducation', function(req,res) {
-    mongoose.connect("mongodb://localhost:27017/userEducationDB", function(error, success){
+    conn4 = mongoose.createConnection("mongodb://localhost:27017/userEducationDB", function(error, success){
         if(error){
             console.log("Error connecting to database: \n" + error);
         }
@@ -158,7 +161,7 @@ app.post('/postUserEducation', function(req,res) {
         state: String,
         zip : String,
     });
-    var oneJob = mongoose.model(userInSessionObject.emailID, userEducationSchema);
+    var oneJob = conn4.model(userInSessionObject.emailID, userEducationSchema);
     var tempUser = new oneJob({
         schoolName: req.body.schoolName,
         degree: req.body.degree,
@@ -183,7 +186,7 @@ app.post('/postUserEducation', function(req,res) {
 //user Projects
 
 app.post('/postUserProject', function(req,res) {
-    mongoose.connect("mongodb://localhost:27017/userProjectDB", function(error, success){
+    conn5 = mongoose.createConnection("mongodb://localhost:27017/userProjectDB", function(error, success){
         if(error){
             console.log("Error connecting to database: \n" + error);
         }
@@ -197,7 +200,7 @@ app.post('/postUserProject', function(req,res) {
         projectDesc: String,
         //desc: String
     });
-    var oneJob = mongoose.model(userInSessionObject.emailID, userProjectSchema);
+    var oneJob = conn5.model(userInSessionObject.emailID, userProjectSchema);
     var tempUser = new oneJob({
         projectName: req.body.projectName,
         projectWebsite: req.body.projectWebsite,
@@ -219,7 +222,7 @@ app.post('/postUserProject', function(req,res) {
 
 // User Skills
 app.post('/postUserSkill', function(req,res) {
-    mongoose.connect("mongodb://localhost:27017/userSkillDB", function(error, success){
+    conn6 = mongoose.createConnection("mongodb://localhost:27017/userSkillDB", function(error, success){
         if(error){
             console.log("Error connecting to database: \n" + error);
         }
@@ -230,7 +233,7 @@ app.post('/postUserSkill', function(req,res) {
     var skillSchema = mongoose.Schema({
         skills: [String]
     });
-    var oneJob = mongoose.model("userSkills", skillSchema);
+    var oneJob = conn6.model("userSkills", skillSchema);
     var tempUser = new oneJob({
         skills: req.body
     });
@@ -244,6 +247,69 @@ app.post('/postUserSkill', function(req,res) {
     });
     
 });
+
+
+// get the User Information
+app.get('/getUserData/:email1', function(req,res) {
+
+    var conn1 = mongoose.createConnection("mongodb://localhost:27017/rdb", function(error, success){
+                                                      if(error){
+                                                          console.log("Error connecting to database: \n" + error);
+                                                      }
+                                                      else{
+                                                          console.log('Connected to Database');
+                                                      }
+                                                  });;
+
+
+    var userSchema = mongoose.Schema({
+        fname: String,
+        lname: String,
+        email1: String,
+        phone: String,
+        address1: String,
+        zip: String
+    });
+    console.log(req.params.email1);
+    var oneUser = conn1.model(req.params.email1, userSchema);
+
+    oneUser.find(function(err, success) {
+      if (err) return console.error(err);
+      console.log(success);
+      mongoose.connection.close();
+      res.send(success);
+    });
+});
+
+// get the Job Experience Information
+app.get('/getUserjobx/:email1', function(req,res) {
+    var conn2 = mongoose.createConnection("mongodb://localhost:27017/xdb", function(error, success){
+        if(error){
+            console.log("Error connecting to database: \n" + error);
+        }
+        else{
+            console.log('Connected to Database');
+        }
+    });
+    var userJobSchema = mongoose.Schema({
+        companyName: String,
+        title: String,
+        location: String,
+        desc: String,
+    });
+    var oneJob = conn2.model(req.params.email1, userJobSchema);
+
+    oneJob.find(function(err, success) {
+          if (err) return console.error(err);
+          console.log(success);
+          mongoose.connection.close();
+          res.send(success);
+        });
+
+});
+
+
+
 
 var userInSessionObject = {};
 app.post("/updateUserEmailID",function(req,res){

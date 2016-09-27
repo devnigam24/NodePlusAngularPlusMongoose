@@ -31,7 +31,7 @@ UserProfile.controller('personLInformationController',['$rootScope','$scope','$h
     var userObject = angular.copy(user);
     $http.post("/postUserData", userObject)
     .success(function (data, status) {
-        console.log(data.email1);
+        console.log(data);
         console.log($rootScope);
         $rootScope.updateRootScope(data.email1,data.fname);
     })
@@ -54,11 +54,17 @@ UserProfile.controller('jobExperienceController',['$rootScope','$scope','$http',
     $http.post("/postUserjobx", userObject,$rootScope.userLoggedIn)
     .success(function (data, status) {
         console.log("user in session "+$rootScope.userLoggedIn);
+
     })
     .error(function(){
         console.log("ye error");
     });
 }
+
+    $scope.addExp = function(){
+            document.getElementById("jobExperience_form").reset();
+
+    }
 }]);
 
 
@@ -79,6 +85,9 @@ UserProfile.controller('projectController',['$rootScope','$scope','$http',functi
         console.log("ye error");
     });
 }
+    $scope.AddProject = function(){
+     document.getElementById("projects_form").reset();
+    }
 }]);
 
 
@@ -98,6 +107,11 @@ UserProfile.controller('educationController',['$rootScope','$scope','$http',func
         console.log("ye error");
     });
 }
+
+    $scope.addEducation = function(){
+                document.getElementById("education_form").reset();
+
+    }
 }]);
 
 
@@ -116,6 +130,10 @@ UserProfile.controller('achievementsController',['$rootScope','$scope','$http',f
         console.log("ye error");
     });
 }
+    $scope.AddAchievement = function(){
+                document.getElementById("acievements_form").reset();
+
+    }
 }]);
 
 
@@ -151,6 +169,23 @@ UserProfile.controller('viewProfileController',['$rootScope','$scope','$http',fu
             console.log("ye error");
         });
    };
+
+   $scope.viewProfile = function(){
+        var url = '/getUserData/' + $scope.userInsessionID;
+                $http.get(url).then(function (data) {
+                    $scope.personalInfo = data.data
+                    console.log("Personal Info");
+                    // for User Job Experience
+                         var url = '/getUserjobx/' + $scope.userInsessionID;
+                         $http.get(url).then(function (data) {
+                         $scope.jobExp = data.data;
+                         console.log(data);
+                         });
+
+                }, function (err) {
+                    console.log("error: ", err);
+                });
+   }
 }]);
 
 

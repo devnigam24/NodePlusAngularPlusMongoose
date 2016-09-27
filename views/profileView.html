@@ -1,14 +1,36 @@
 <div  ng-controller="viewProfileController" ng-init="init()">
     hello {{userInSession}}
     your email id is {{userInsessionID}}
-    <div id="personalInfo"></div>
-    <div id="jobExperience">  <h6>jobExperience </h6></div>
-    <div id="skills"><h6>Skills </h6></div>
+    <div>
+        <Br>
+    <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+            <button ng-click = "viewProfile()" type="submit" class="btn btn-warning" >View <span class="glyphicon glyphicon-send"></span></button>
+        </div>
+    </div>
+        <br>
+
+    <div id="personalInfo1"> <h4>Personal Information</h4>
+        <div ng-repeat="info in personalInfo" id="Info1">
+            <h6> First Name: {{info.fname}}</h6>
+            <h6> Last Name: {{info.lname}}</h6>
+            <h6> Address: {{info.address1}}</h6>
+         </div>
+    </div>
+    <div id="jobExperience1">  <h4>jobExperience </h4>
+        <div ng-repeat="info in jobExp" id=" exp1">
+            <h6> Company Name: {{info.companyName}}</h6>
+            <h6> Title : {{info.title}}</h6>
+            <h6> Responsibilities: {{info.desc}}</h6>
+        </div>
+    </div>
+    <div id="skills"><h4>Skills </h4></div>
     <div id="projects"></div>
     <div id="education"></div>
     <div id="achievements"></div>
 
 
-
+    </div>
 </div>
 
