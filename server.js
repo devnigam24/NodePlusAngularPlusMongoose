@@ -58,7 +58,6 @@ app.post('/postUserData', function(req,res) {
             return console.log(err);
         }
         console.log("user Successfully Saved!");
-        mongoose.model.remove();
         mongoose.connection.close();
         res.json(tempUser);
     });
