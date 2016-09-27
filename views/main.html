@@ -1,0 +1,8 @@
+<!--main.html-->
+    <div class="clearfix">
+      <form ng-Submit="post()">
+        <input required type="text"class="form-control" placeholder="Your name" ng-model="newPost.created_by"/> <br>
+        <textarea required maxlength="200" class="form-control" rows="3" placeholder="Say something" ng-model="newPost.text"></textarea>
+        <input class="btn submit-btn pull-right" type="submit" value="Post Task" />
+      </form>
+	</div>

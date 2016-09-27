@@ -1,0 +1,157 @@
+<div ng-controller="educationController">
+
+
+<form class="well form-horizontal"  id="education_form">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Education</legend>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">School Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+                        <input  name="school_name" placeholder="School Name" class="form-control"  type="text" ng-model="user.schoolName">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Degree</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-certificate"></i></span>
+                        <input name="degree" placeholder="Degree" class="form-control"  type="text" ng-model="user.degree">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Major</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-book"></i></span>
+                        <input name="major" placeholder="Major" class="form-control"  type="text" ng-model="user.major">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Text input
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Address</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input name="address" placeholder="Address" class="form-control" type="text" ng-model="user.address">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">City</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input name="city" placeholder="city" class="form-control"  type="text" ng-model="user.city">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">State</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="state" class="form-control selectpicker" ng-model ="user.state" >
+                            <option value=" " >Please select your state</option>
+                            <option>Alabama</option>
+                            <option>Alaska</option>
+                            <option >Arizona</option>
+                            <option >Arkansas</option>
+                            <option >California</option>
+                            <option >Colorado</option>
+                            <option >Connecticut</option>
+                            <option >Delaware</option>
+                            <option >District of Columbia</option>
+                            <option> Florida</option>
+                            <option >Georgia</option>
+                            <option >Hawaii</option>
+                            <option >daho</option>
+                            <option >Illinois</option>
+                            <option >Indiana</option>
+                            <option >Iowa</option>
+                            <option> Kansas</option>
+                            <option >Kentucky</option>
+                            <option >Louisiana</option>
+                            <option>Maine</option>
+                            <option >Maryland</option>
+                            <option> Mass</option>
+                            <option >Michigan</option>
+                            <option >Minnesota</option>
+                            <option>Mississippi</option>
+                            <option>Missouri</option>
+                            <option>Montana</option>
+                            <option>Nebraska</option>
+                            <option>Nevada</option>
+                            <option>New Hampshire</option>
+                            <option>New Jersey</option>
+                            <option>New Mexico</option>
+                            <option>New York</option>
+                            <option>North Carolina</option>
+                            <option>North Dakota</option>
+                            <option>Ohio</option>
+                            <option>Oklahoma</option>
+                            <option>Oregon</option>
+                            <option>Pennsylvania</option>
+                            <option>Rhode Island</option>
+                            <option>South Carolina</option>
+                            <option>South Dakota</option>
+                            <option>Tennessee</option>
+                            <option>Texas</option>
+                            <option> Uttah</option>
+                            <option>Vermont</option>
+                            <option>Virginia</option>
+                            <option >Washington</option>
+                            <option >West Virginia</option>
+                            <option>Wisconsin</option>
+                            <option >Wyoming</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Zip Code</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input name="zip" placeholder="Zip Code" class="form-control"  type="text" ng-model="user.zip">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button ng-click = "saveEducation(user)" class="btn btn-warning" > Save <span class="glyphicon glyphicon-send"></span></button>                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,74 @@
+    <div ng-controller="jobExperienceController">
+        <form class="well form-horizontal"  id="jobExperience_form">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Job Experience</legend>
+                <!-- Text input-->
+                aaa{{$rootScope.userLoggedIn}}
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Company Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input  ng-model="user.companyName" name="companyName" placeholder="Company Name" class="form-control"  type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" >Title </label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input ng-model="user.title" name="Title" placeholder="Designation" class="form-control"  type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Location</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            <input ng-model="user.location" name="location" placeholder="Location" class="form-control"  type="text">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Text input-->
+
+                         <!-- Text area -->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label"> Responsibilities </label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                            <textarea ng-model="user.desc" class="form-control" name="comment" placeholder="Responsibilities"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button ng-click = "saveInfo(user)" type="submit" class="btn btn-warning" >Save <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button ng-click = "AddProject()" type="submit" class="btn btn-warning" >Add New <span class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+
+                <pre>user = {{user | json}}</pre>
+            </fieldset>
+        </form>
+    </div>

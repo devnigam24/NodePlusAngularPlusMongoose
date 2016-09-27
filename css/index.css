@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+  .parallax-container {
+      height: 600px;
+    }
+      
+.slider {  
+  touch-action: pan-y; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  z-index:-1; 
+  
+}
+
+.secondary-content {
+    background-color: lightblue;
+}
+
+#bg ,#abt{
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+  z-index : -1;
+}
+
+#loc_info {
+  margin-left: 12%;
+  margin-top: 6%;
+}
+
+.card {
+ width:300px;
+ height: 300px
+}
+strong {
+  font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+  font-size: 120%;
+}
+#back{
+     background-image: url("images/car1.jpg");
+}
+.card-reveal{
+  font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+  color:  white;
+  
+}
+
+.card-content{
+  width:300px;
+  height : 100px;
+}
+.card-image{
+   width:300px;
+  height : 200px;
+}
+.card-panel{
+  width:50%;
+  height :70%;
+  margin-left : 20%
+  
+}
+

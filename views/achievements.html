@@ -1,0 +1,72 @@
+<div ng-controller="achievementsController">
+    <form class="well form-horizontal"  id="acievements_form">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend> Achievements </legend>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label"> Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  ng-model="user.achievementName" name="achievementName" placeholder="Achievement Name" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label" >Title </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input ng-model="user.achievementTitle" name="achievementTitle" placeholder="Achievement Title" class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Award</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input ng-model="user.achievementAward" name="achievementAward" placeholder=" Award " class="form-control"  type="text">
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Text input-->
+
+            <!-- Text area -->
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Description</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                        <textarea ng-model="user.achievementDesc" class="form-control" name="comment" placeholder="Achievement Description"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button ng-click = "saveAchievement(user)" type="submit" class="btn btn-warning" >Save <span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button ng-click = "AddAchievement()" type="submit" class="btn btn-warning" >Add New <span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
