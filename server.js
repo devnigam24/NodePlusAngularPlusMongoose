@@ -14,6 +14,24 @@ app.use(bodyparser.json());
 
 
 
+//file upload
+// index.js start of file
+var multer = require('multer'),
+	path = require('path');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname+ '-' + Date.now()+'.pdf')
+    }
+});
+
+var upload = multer({ storage: storage });
+
+
+
 
 app.use(express.static("."));
 app.use(bodyparser.json({ type: 'application/*+json' }));
@@ -422,6 +440,13 @@ app.get("/updateUserEmailID",function(req,res){
     res.send(userInSessionObject);
 });
 
+app.post("/fileUpload",function(req,res){
+    console.log("file here "+req.body);
+    res.send(req.body);
+});
+
+
+app.post('/multer', upload.single('file'));
 
 //////// SERVER CONNECTION ///////////
 http.createServer(app).listen(3000, function(){

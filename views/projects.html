@@ -62,20 +62,12 @@
             </div>
 
             <!-- File Inputs -->
-
-            <form action="#">
-                <div class="file-field input-field">
-                    <div class="btn">
-                        <span>File</span>
-                        <input type="file">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" ng-model="user.fileName">
-                    </div>
-                    {{fileName}}
-                </div>
-            </form>
-
+            
+            <input type="file" file-model="myFile" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*"/>
+            <br><br>
+            <button ng-click="uploadFile()">Upload</button>
+            
+            {{myFile}}
             <!-- Button -->
             <div class="form-group">
                 <label class="col-md-4 control-label"></label>
