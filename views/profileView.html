@@ -25,10 +25,36 @@
             <h6> Responsibilities: {{info.desc}}</h6>
         </div>
     </div>
-    <div id="skills"><h4>Skills </h4></div>
-    <div id="projects"></div>
-    <div id="education"></div>
-    <div id="achievements"></div>
+
+    <div id="skills1"><h4>Skills </h4>
+        <div ng-repeat="skills1 in userSkill" id=" skill1">
+            <h6> skills : {{skills1.skills}}</h6>
+
+        </div>
+    </div>
+    <div id="projects1"><h4>Projects </h4>
+        <div ng-repeat="info in userProject" id=" proj1">
+            <h6> Project Name: {{info.projectName}}</h6>
+            <h6> projectWebsite : {{info.projectWebsite}}</h6>
+            <h6> projectDesc: {{info.projectDesc}}</h6>
+            <h6> projectDesc: {{info.fileName}}</h6>
+        </div>
+    </div>
+    <div id="education1"><h4>Education </h4>
+        <div ng-repeat="info in userEducation" id=" edu1">
+            <h6> School Name: {{info.schoolName}}</h6>
+            <h6> Degree : {{info.degree}}</h6>
+            <h6> Major: {{info.major}}</h6>
+        </div>
+    </div>
+    <div id="achievements1"><h4>Achievements </h4>
+        <div ng-repeat="info in userAchievements" id=" achi1">
+            <h6> Achievement Name: {{info.achievementName}}</h6>
+            <h6> Title : {{info.achievementTitle}}</h6>
+            <h6> Award: {{info.achievementAward}}</h6>
+            <h6> Desc: {{info.achievementDesc}}</h6>
+        </div>
+    </div>
 
 
     </div>

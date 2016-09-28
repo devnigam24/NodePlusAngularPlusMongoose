@@ -14,7 +14,7 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  name="projectName" placeholder="Project Name" class="form-control"  type="text" ng-model="User.projectName">
+                        <input  name="projectName" placeholder="Project Name" class="form-control"  type="text" ng-model="user.projectName">
                     </div>
                 </div>
             </div>
@@ -26,12 +26,12 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                        <input name="website" placeholder="Website or domain name" class="form-control" type="text" ng-model="User.projectWebsite">
+                        <input name="website" placeholder="Website or domain name" class="form-control" type="text" ng-model="user.projectWebsite">
                     </div>
                 </div>
             </div>
 
-            <!-- radio checks -->
+            <!-- radio checks
             <div class="form-group">
                 <label class="col-md-4 control-label">Do you have hosting?</label>
                 <div class="col-md-4">
@@ -48,6 +48,7 @@
                 </div>
             </div>
 
+
             <!-- Text area -->
 
             <div class="form-group">
@@ -60,6 +61,20 @@
                 </div>
             </div>
 
+            <!-- File Inputs -->
+
+            <form action="#">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" ng-model="user.fileName">
+                    </div>
+                    {{fileName}}
+                </div>
+            </form>
 
             <!-- Button -->
             <div class="form-group">

@@ -180,6 +180,27 @@ UserProfile.controller('viewProfileController',['$rootScope','$scope','$http',fu
                          $http.get(url).then(function (data) {
                          $scope.jobExp = data.data;
                          console.log(data);
+                             var url = '/getUserSkill/' + $scope.userInsessionID;
+                                                     $http.get(url).then(function (data) {
+                                                     $scope.userSkill = data.data;
+                                                     console.log(data);
+                                                     });
+                                 var url = '/getUserProject/' + $scope.userInsessionID;
+                                                     $http.get(url).then(function (data) {
+                                                     $scope.userProject = data.data;
+                                                     console.log(data);
+                                                     });
+                                 var url = '/getUserEducation/' + $scope.userInsessionID;
+                                                      $http.get(url).then(function (data) {
+                                                      $scope.userEducation = data.data;
+                                                      console.log(data);
+                                                      });
+                                      var url = '/getUserAchievement/' + $scope.userInsessionID;
+                                                     $http.get(url).then(function (data){
+                                                     $scope.userAchievements = data.data;
+                                                     console.log(data);
+                                                     });
+
                          });
 
                 }, function (err) {
@@ -187,7 +208,6 @@ UserProfile.controller('viewProfileController',['$rootScope','$scope','$http',fu
                 });
    }
 }]);
-
 
 
 /* Routing */
