@@ -100,6 +100,14 @@ UserProfile.controller('projectController',['$rootScope','$scope','$http',functi
         })
         .success(function(){
           console.log("success!!");
+
+           var fileNameUploaded = $("#fileUploaded").val().split("\\")[2];
+                //window.location.href = "../uploads/"+fileNameUploaded;
+
+            var myFile  =  "../uploads/"+fileNameUploaded ;
+            var l = '<a href="' + myFile + '" >" ' + fileNameUploaded + ' </a>'
+            //var l = "<a href="  + myFile + ">" + Download now! + "</a>"
+            $("#down1").append( l );
         })
         .error(function(){
           console.log("error!!");

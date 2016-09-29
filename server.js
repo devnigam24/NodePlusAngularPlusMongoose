@@ -448,6 +448,7 @@ app.post("/fileUpload",function(req,res){
 
 app.post('/multer', upload.single('file'),function(req,res){
     console.log(req);
+    res.send("Success");
 });
 
 //////// SERVER CONNECTION ///////////
