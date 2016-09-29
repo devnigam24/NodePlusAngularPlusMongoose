@@ -24,7 +24,7 @@ var storage = multer.diskStorage({
         cb(null, './uploads/')
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname+ '-' + Date.now()+'.pdf')
+        cb(null, file.originalname)
     }
 });
 
@@ -446,7 +446,9 @@ app.post("/fileUpload",function(req,res){
 });
 
 
-app.post('/multer', upload.single('file'));
+app.post('/multer', upload.single('file'),function(req,res){
+    console.log(req);
+});
 
 //////// SERVER CONNECTION ///////////
 http.createServer(app).listen(3000, function(){
