@@ -13,24 +13,41 @@
 
     <div id="personalInfo1"> <h4>Personal Information</h4>
         <div ng-repeat="info in personalInfo" id="Info1">
-            <h6> First Name: {{info.fname}}</h6>
-            <h6> Last Name: {{info.lname}}</h6>
-            <h6> Address: {{info.address1}}</h6>
-         </div>
+           First Name: <input  name="first_name" placeholder="First Name" disabled="disabled" class="form-control"  type="text" ng-model="info.fname">
+           Last Name:  <input  name="last_name" placeholder="Last Name" disabled="disabled" class="form-control" type="text" ng-model="info.lname">
+           Phone: <input  name="phone" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.phone">
+           Address: <input  name="address1" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.address1">
+           Zip: <input  name="zip" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.zip">
+
+            <button ng-click="updateProfile(info)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+            <div class="col-md-4">
+                <button ng-click="editFieldsHere()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
+            </div><br>
+         </div><br>
+
     </div>
     <div id="jobExperience1">  <h4>jobExperience </h4>
         <div ng-repeat="info in jobExp" id=" exp1">
-            <h6> Company Name: {{info.companyName}}</h6>
-            <h6> Title : {{info.title}}</h6>
-            <h6> Responsibilities: {{info.desc}}</h6>
-        </div>
+            Company Name: <input  name="first_name" placeholder="First Name" disabled="disabled" class="form-control"  type="text" ng-model="info.companyName">
+            Title:  <input  name="last_name" placeholder="Last Name" disabled="disabled" class="form-control" type="text" ng-model="info.title">
+            Location: <input  name="phone" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.location">
+            Responsibilities: <input  name="address1" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.desc">
+
+            <button ng-click="updateJobX(info)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+            <div class="col-md-4">
+                <button ng-click="editFieldsHere()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
+            </div><br>
+        </div><br>
     </div>
 
     <div id="skills1"><h4>Skills </h4>
         <div ng-repeat="skills1 in userSkill" id=" skill1">
-            <h6> skills : {{skills1.skills}}</h6>
-
-        </div>
+            skills: <input  name="first_name" placeholder="First Name" disabled="disabled" class="form-control"  type="text" ng-model="skills1.skills">
+            <button ng-click="updateSkill(skills1)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+            <div class="col-md-4">
+                <button ng-click="editFieldsHere()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
+            </div><br>
+        </div><br>
     </div>
     <div id="projects1"><h4>Projects </h4>
         <div ng-repeat="info in userProject" id=" proj1">

@@ -29,6 +29,7 @@ UserProfile.controller('personLInformationController',['$rootScope','$scope','$h
     $scope.saveInfo = function (user) {
     console.log("Hey");
     var userObject = angular.copy(user);
+    console.log(userObject);
     $http.post("/postUserData", userObject)
     .success(function (data, status) {
         console.log(data);
@@ -198,6 +199,7 @@ UserProfile.controller('skillController',['$rootScope','$scope','$http',function
 
 /* Profile View */
 UserProfile.controller('viewProfileController',['$rootScope','$scope','$http',function($rootScope, $scope, $http){
+    $scope.BooleanVlueForEdit = true;
    $scope.init = function () {
        $http.get("/updateUserEmailID")
         .success(function (data, status) {
@@ -246,6 +248,53 @@ UserProfile.controller('viewProfileController',['$rootScope','$scope','$http',fu
                 }, function (err) {
                     console.log("error: ", err);
                 });
+   }
+
+       $scope.editFieldsHere = function(){
+            $("input[name='first_name']").removeAttr("disabled");
+            $("input").each(function(){
+            $(this).removeAttr("disabled");
+            });
+
+       $scope.updateUser = function(info){
+        console.log(info);
+        console.log("session"+$scope.userInsessionID);
+        $http.put("/updateUserData", info)
+            .success(function (data, status) {
+                console.log(data);
+                console.log($rootScope);
+                $rootScope.updateRootScope(data.email1,data.fname);
+            })
+            .error(function(){
+                console.log("ye error");
+            });
+       }
+       $scope.updateJobX = function(info){
+               console.log(info);
+               console.log("session"+$scope.userInsessionID);
+               $http.put("/updateUserjobx", info,$rootScope.userLoggedIn)
+                   .success(function (data, status) {
+                       console.log(data);
+                       console.log($rootScope);
+                       //$rootScope.updateRootScope(data.email1,data.fname);
+                   })
+                   .error(function(){
+                       console.log("ye error");
+                   });
+              }
+       $scope.updateSkill = function(info){
+                      console.log(info);
+                      console.log("session"+$scope.userInsessionID);
+                      $http.put("/updateUserSkill", info,$rootScope.userLoggedIn)
+                          .success(function (data, status) {
+                              console.log(data);
+                              console.log($rootScope);
+                              //$rootScope.updateRootScope(data.email1,data.fname);
+                          })
+                          .error(function(){
+                              console.log("ye error");
+                          });
+                     }
    }
 }]);
 

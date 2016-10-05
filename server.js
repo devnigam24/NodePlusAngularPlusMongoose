@@ -85,6 +85,50 @@ app.post('/postUserData', function(req,res) {
     
 });
 
+//Updating User Data
+app.put('/updateUserData', function(req,res) {
+
+    var conn1 = mongoose.createConnection("mongodb://localhost:27017/rdb", function(error, success){
+                                                      if(error){
+                                                          console.log("Error connecting to database: \n" + error);
+                                                      }
+                                                      else{
+                                                          console.log('Connected to Database');
+                                                      }
+                                                  });;
+
+
+    var userSchema = mongoose.Schema({
+        fname: String,
+        lname: String,
+        email1: String,
+        phone: String,
+        address1: String,
+        zip: String
+    });
+    var oneUser = conn1.model(req.body.email1, userSchema);
+    /*var tempUser = new oneUser({
+        fname: req.body.fname,
+        lname: req.body.lname,
+        email1: req.body.email1,
+        phone: req.body.phone,
+        address1: req.body.address1,
+        zip: req.body.zip
+    }); */
+    var query = { email1: req.body.email1};
+    oneUser.update(query, { fname: req.body.fname,lname: req.body.lname, }, { multi: true }, callback);
+    function callback (err, numAffected) {
+      // numAffected is the number of updated documents
+    }
+        console.log("user Successfully Saved!");
+            mongoose.connection.close();
+
+
+
+
+});
+
+
 
 //User Experience
 
@@ -121,6 +165,44 @@ app.post('/postUserjobx', function(req,res) {
         res.json(tempUser);
     });
     
+});
+
+
+//Update User Experience
+
+app.put('/updateUserjobx', function(req,res) {
+    var conn2 = mongoose.createConnection("mongodb://localhost:27017/xdb", function(error, success){
+        if(error){
+            console.log("Error connecting to database: \n" + error);
+        }
+        else{
+            console.log('Connected to Database');
+        }
+    });
+    var userJobSchema = mongoose.Schema({
+        companyName: String,
+        title: String,
+        location: String,
+        desc: String,
+    });
+    var oneJob = conn2.model(userInSessionObject.emailID, userJobSchema);
+    var tempUser = new oneJob({
+        companyName: req.body.companyName,
+        title: req.body.title,
+        location: req.body.location,
+        desc: req.body.desc
+    });
+    console.log(req.body);
+
+    var query = { companyName: req.body.companyName};
+       oneJob.update(query, { title: req.body.title,location: req.body.location, desc: req.body.desc}, { multi: true }, callback);
+       function callback (err, numAffected) {
+         // numAffected is the number of updated documents
+       }
+           console.log("user Successfully Saved!");
+               mongoose.connection.close();
+
+
 });
 
 
@@ -265,6 +347,35 @@ app.post('/postUserSkill', function(req,res) {
     });
     
 });
+
+// Update User Skills
+app.put('/updateUserSkill', function(req,res) {
+    var conn6 = mongoose.createConnection("mongodb://localhost:27017/userSkillDB", function(error, success){
+        if(error){
+            console.log("Error connecting to database: \n" + error);
+        }
+        else{
+            console.log('Connected to Database');
+        }
+    });
+    var skillSchema = mongoose.Schema({
+        skills: [String]
+    });
+    var oneJob = conn6.model(userInSessionObject.emailID, skillSchema);
+    var tempUser = new oneJob({
+        skills: req.body
+    });
+    tempUser.save(function(err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("user Successfully Saved!");
+        mongoose.connection.close();
+        res.json(tempUser);
+    });
+
+});
+
 
 
 // get the User Information
