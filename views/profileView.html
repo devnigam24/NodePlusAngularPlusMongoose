@@ -42,38 +42,68 @@
 
     <div id="skills1"><h4>Skills </h4>
         <div ng-repeat="skills1 in userSkill" id=" skill1">
-            skills: <input  name="first_name" placeholder="First Name" disabled="disabled" class="form-control"  type="text" ng-model="skills1.skills">
-            <button ng-click="updateSkill(skills1)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+            <div class="chips">
+                skills: <input  name="skills" placeholder="Add skills" disabled="disabled" class="form-control"  type="text" ng-model="skills1.skills">
+            </div>
+            <!--<div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">-->
+                    <button ng-click ="updateSkill(skills1)" class="btn btn-warning" >Update<span class="glyphicon glyphicon-send"></span></button>
+                <!--</div>
+            </div> -->
+
+            <!--<button ng-click="updateSkill(skills1)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>-->
             <div class="col-md-4">
-                <button ng-click="editFieldsHere()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
+                <button ng-click="editandcreatechips()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
             </div><br>
         </div><br>
     </div>
     <div id="projects1"><h4>Projects </h4>
         <div ng-repeat="info in userProject" id=" proj1">
-            <h6> Project Name: {{info.projectName}}</h6>
-            <h6> projectWebsite : {{info.projectWebsite}}</h6>
-            <h6> projectDesc: {{info.projectDesc}}</h6>
-            <h6> projectDesc: {{info.fileName}}</h6>
-        </div>
+                Project Name: <input  name="first_name" placeholder="First Name" disabled="disabled" class="form-control"  type="text" ng-model="info.projectName">
+                Project Website: <input  name="last_name" placeholder="Last Name" disabled="disabled" class="form-control" type="text" ng-model="info.projectWebsite">
+                Project Description: <input  name="phone" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.projectDesc">
+
+                <button ng-click="updateProject(info)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+                <div class="col-md-4">
+                    <button ng-click="editFieldsHere()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
+                </div><br>
+        </div><br>
     </div>
     <div id="education1"><h4>Education </h4>
         <div ng-repeat="info in userEducation" id=" edu1">
-            <h6> School Name: {{info.schoolName}}</h6>
-            <h6> Degree : {{info.degree}}</h6>
-            <h6> Major: {{info.major}}</h6>
-        </div>
+            School Name: <input  name="first_name" placeholder="First Name" disabled="disabled" class="form-control"  type="text" ng-model="info.schoolName">
+            Degree:  <input  name="last_name" placeholder="Last Name" disabled="disabled" class="form-control" type="text" ng-model="info.degree">
+            Major: <input  name="phone" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.Major">
+            City: <input  name="address1" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.city">
+            State: <input  name="address1" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.state">
+            Zip: <input  name="address1" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.zip">
+
+            <button ng-click="updateEducation(info)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+            <div class="col-md-4">
+                <button ng-click="editFieldsHere()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
+            </div><br>
+        </div><br>
     </div>
     <div id="achievements1"><h4>Achievements </h4>
         <div ng-repeat="info in userAchievements" id=" achi1">
-            <h6> Achievement Name: {{info.achievementName}}</h6>
-            <h6> Title : {{info.achievementTitle}}</h6>
-            <h6> Award: {{info.achievementAward}}</h6>
-            <h6> Desc: {{info.achievementDesc}}</h6>
-        </div>
+            Achievement Name: <input  name="first_name" placeholder="First Name" disabled="disabled" class="form-control"  type="text" ng-model="info.achievementName">
+            Title:  <input  name="last_name" placeholder="Last Name" disabled="disabled" class="form-control" type="text" ng-model="info.achievementTitle">
+            Award: <input  name="phone" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.achievementAward">
+            Desc: <input  name="address1" placeholder="Address" disabled="disabled" class="form-control"  type="text" ng-model="info.achievementDesc">
+
+            <button ng-click="updateAchievement(info)" type="submit" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
+            <div class="col-md-4">
+                <button ng-click="editFieldsHere()" type="submit" class="btn btn-warning" >edit <span class="glyphicon glyphicon-send"></span></button>
+            </div><br>
+        </div><br>
     </div>
 
 
     </div>
 </div>
 
+
+<script type="text/javascript">
+var skillsArray = [];
+  </script>

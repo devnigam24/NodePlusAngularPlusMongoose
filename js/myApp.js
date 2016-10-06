@@ -187,7 +187,7 @@ UserProfile.controller('skillController',['$rootScope','$scope','$http',function
     });
     console.log(skillsArray);
     //console.log("user in session "+$rootScope.getUserRootScope());
-    $http.post("/postUserSkill", skillsArray)
+    $http.post("/postUserSkill", skillsArray,$rootScope.userLoggedIn)
     .success(function (data, status) {
         console.log("user in session "+$rootScope.userLoggedIn);
     })
@@ -255,7 +255,7 @@ UserProfile.controller('viewProfileController',['$rootScope','$scope','$http',fu
             $("input").each(function(){
             $(this).removeAttr("disabled");
             });
-
+        }
        $scope.updateUser = function(info){
         console.log(info);
         console.log("session"+$scope.userInsessionID);
@@ -282,20 +282,79 @@ UserProfile.controller('viewProfileController',['$rootScope','$scope','$http',fu
                        console.log("ye error");
                    });
               }
-       $scope.updateSkill = function(info){
-                      console.log(info);
-                      console.log("session"+$scope.userInsessionID);
-                      $http.put("/updateUserSkill", info,$rootScope.userLoggedIn)
-                          .success(function (data, status) {
-                              console.log(data);
-                              console.log($rootScope);
-                              //$rootScope.updateRootScope(data.email1,data.fname);
-                          })
-                          .error(function(){
-                              console.log("ye error");
-                          });
-                     }
-   }
+       $scope.updateSkill = function (skillArray) {
+       debugger;
+                             $(".chip").each(function(){
+                                 skillsArray.push(this.firstChild.textContent);
+                             });
+                             console.log(skillsArray);
+                             //console.log("user in session "+$rootScope.getUserRootScope());
+                              $http.put("/updateUserSkill", skillsArray,$rootScope.userLoggedIn)
+                                                       .success(function (data, status) {
+                                                           console.log(data);
+                                                           console.log($rootScope);
+                                                           //$rootScope.updateRootScope(data.email1,data.fname);
+                                                       })
+                                                       .error(function(){
+                                                           console.log("ye error");
+                                                       });
+                         }
+        $scope.editandcreatechips = function(){
+            $("input[name='first_name']").removeAttr("disabled");
+                        $("input").each(function(){
+                        $(this).removeAttr("disabled");
+                        });
+            $("input[name='skills']").change(function(){
+                var theHTML = '<div class="chip"><vidhi>'+$("input[name='skills']").val()+'</vidhi><i class="material-icons close">close</i></div>';
+                $(theHTML).insertBefore($("input[name='skills']"));
+                $("input[name='skills']").val("");
+            });
+        }
+
+        //update Project
+        $scope.updateProject = function(info){
+                       console.log(info);
+                       console.log("session"+$scope.userInsessionID);
+                       $http.put("/updateUserProject", info,$rootScope.userLoggedIn)
+                           .success(function (data, status) {
+                               console.log(data);
+                               console.log($rootScope);
+                               //$rootScope.updateRootScope(data.email1,data.fname);
+                           })
+                           .error(function(){
+                               console.log("ye error");
+                           });
+                      }
+        //update education
+        $scope.updateEducation = function(info){
+                               console.log(info);
+                               console.log("session"+$scope.userInsessionID);
+                               $http.put("/updateUserEducation", info,$rootScope.userLoggedIn)
+                                   .success(function (data, status) {
+                                       console.log(data);
+                                       console.log($rootScope);
+                                       //$rootScope.updateRootScope(data.email1,data.fname);
+                                   })
+                                   .error(function(){
+                                       console.log("ye error");
+                                   });
+                              }
+
+        //update achievements
+        $scope.updateAchievement = function(info){
+                                       console.log(info);
+                                       console.log("session"+$scope.userInsessionID);
+                                       $http.put("/updateUserAchievement", info,$rootScope.userLoggedIn)
+                                           .success(function (data, status) {
+                                               console.log(data);
+                                               console.log($rootScope);
+                                               //$rootScope.updateRootScope(data.email1,data.fname);
+                                           })
+                                           .error(function(){
+                                               console.log("ye error");
+                                           });
+                                      }
+
 }]);
 
 

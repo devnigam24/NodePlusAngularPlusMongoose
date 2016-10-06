@@ -243,6 +243,41 @@ app.post('/postUserAchievement', function(req,res) {
 });
 
 
+//Update User Achievements
+
+app.put('/updateUserAchievement', function(req,res) {
+    var conn3 = mongoose.createConnection("mongodb://localhost:27017/userAchievementsDB", function(error, success){
+        if(error){
+            console.log("Error connecting to database: \n" + error);
+        }
+        else{
+            console.log('Connected to Database');
+        }
+    });
+    var userAchievementSchema = mongoose.Schema({
+        achievementName : String,
+        achievementTitle : String,
+        achievementAward : String,
+        achievementDesc : String
+    });
+    var oneJob = conn3.model(userInSessionObject.emailID, userAchievementSchema);
+
+    console.log(req.body);
+
+    var query = { achievementName: req.body.achievementName};
+           oneJob.update(query, { achievementTitle: req.body.achievementTitle,achievementAward: req.body.achievementAward, achievementDesc: req.body.achievementDesc}, { multi: true }, callback);
+           function callback (err, numAffected) {
+             // numAffected is the number of updated documents
+           }
+               console.log("user Successfully Saved!");
+                   mongoose.connection.close();
+
+
+});
+
+
+
+
 //User Education
 app.post('/postUserEducation', function(req,res) {
     var conn4 = mongoose.createConnection("mongodb://localhost:27017/userEducationDB", function(error, success){
@@ -282,6 +317,35 @@ app.post('/postUserEducation', function(req,res) {
     });
 });
 
+//Update User Education
+  app.put('/updateUserEducation', function(req,res) {
+      var conn4 = mongoose.createConnection("mongodb://localhost:27017/userEducationDB", function(error, success){
+          if(error){
+              console.log("Error connecting to database: \n" + error);
+          }
+          else{
+              console.log('Connected to Database');
+          }
+      });
+      var userEducationSchema = mongoose.Schema({
+          schoolName : String,
+          degree: String,
+          major: String,
+          city: String,
+          state: String,
+          zip : String,
+      });
+      var oneJob = conn4.model(userInSessionObject.emailID, userEducationSchema);
+
+       var query = { schoolName: req.body.schoolName};
+                 oneJob.update(query, { degree: req.body.degree, major: req.body.major,city: req.body.city,state: req.body.state,zip: req.body.zip}, { multi: true }, callback);
+                 function callback (err, numAffected) {
+                   // numAffected is the number of updated documents
+                 }
+                     console.log("user Successfully Saved!");
+                         mongoose.connection.close();
+  });
+
 
 //user Projects
 
@@ -318,6 +382,35 @@ app.post('/postUserProject', function(req,res) {
         res.json(tempUser);
     });
 });
+
+//user Projects
+
+app.put('/updateUserProject', function(req,res) {
+    var conn5 = mongoose.createConnection("mongodb://localhost:27017/userProjectDB", function(error, success){
+        if(error){
+            console.log("Error connecting to database: \n" + error);
+        }
+        else{
+            console.log('Connected to Database');
+        }
+    });
+    var userProjectSchema = mongoose.Schema({
+        projectName: String,
+        projectWebsite: String,
+        projectDesc: String,
+    });
+    var oneJob = conn5.model(userInSessionObject.emailID, userProjectSchema);
+
+    var query = { projectName: req.body.projectName};
+           oneJob.update(query, { projectWebsite: req.body.projectWebsite, projectDesc: req.body.projectDesc}, { multi: true }, callback);
+           function callback (err, numAffected) {
+             // numAffected is the number of updated documents
+           }
+               console.log("user Successfully Saved!");
+                   mongoose.connection.close();
+
+});
+
 
 
 // User Skills
@@ -362,17 +455,14 @@ app.put('/updateUserSkill', function(req,res) {
         skills: [String]
     });
     var oneJob = conn6.model(userInSessionObject.emailID, skillSchema);
-    var tempUser = new oneJob({
-        skills: req.body
-    });
-    tempUser.save(function(err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log("user Successfully Saved!");
-        mongoose.connection.close();
-        res.json(tempUser);
-    });
+
+    var query = { companyName: req.body.companyName};
+       oneJob.update({}, { skills: req.body}, { multi: true }, callback);
+       function callback (err, numAffected) {
+         // numAffected is the number of updated documents
+       }
+           console.log("user Successfully Saved!");
+               mongoose.connection.close();
 
 });
 
